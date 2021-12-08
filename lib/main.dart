@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:contactapp/contact_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List mycontacts = listOfcontas;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -43,7 +46,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: mycontacts.length,
           itemBuilder: (BuildContext context, index) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,18 +76,22 @@ class HomePage extends StatelessWidget {
                   ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ContactPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(
+                                  mycontact: mycontacts[index],
+                                )));
                   },
-                  child: const ListTile(
+                  child: ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage("images/lady.jpg"),
-                    ),
+                        backgroundImage:
+                            NetworkImage("${mycontacts[index]["Image"]}")),
                     title: Text(
-                      "Techries Ghana",
+                      mycontacts[index]['name'],
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
-                    subtitle: Text("+233 505 419 44"),
+                    subtitle: Text("+3 505 44419 "),
                     trailing: Icon(Icons.more_horiz),
                   ),
                 ),
@@ -106,3 +113,86 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+List listOfcontas = [
+  {
+    "name": "hammy",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=10"
+  },
+  {
+    "name": "hamida",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=30"
+  },
+  {
+    "name": "hanatu",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=40"
+  },
+  {
+    "name": "kweekwe",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=50"
+  },
+  {
+    "name": "salam",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=70"
+  },
+  {
+    "name": "ajara",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=85"
+  },
+  {
+    "name": "mushnat",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233548496662",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=100"
+  },
+  {
+    "name": "hajji",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=105"
+  },
+  {
+    "name": "rezika",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=1"
+  },
+  {
+    "name": "jamal",
+    "location": "wa",
+    "email": "yourem@email.com",
+    "phone": "+233552102040",
+    "Group": "famil",
+    "Image": "https://picsum.photos/200/300?random=1"
+  },
+];
